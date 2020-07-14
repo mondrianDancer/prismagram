@@ -2,7 +2,6 @@ import { adjectives, nouns } from "./words";
 import jwt from "jsonwebtoken";
 
 export const generateSecret = () => {
-  //adjectives의 배열 길이 내에서 랜덤넘버(내림차순)을 가져옴
   const randomNumber = Math.floor(Math.random() * adjectives.length);
   return `${adjectives[randomNumber]} ${nouns[randomNumber]}`;
 };
@@ -27,5 +26,4 @@ export const sendSecretMail = (adress, secret) => {
   };
   return sendMail(email);
 };
-//JWT 생성
 export const generateToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET);
